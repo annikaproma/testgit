@@ -1,0 +1,124 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LabWork
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int x, y, lenth;
+            Console.Write("Enter Value of X: ");
+            x = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Value of Y: ");
+            y = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Value of Lenth: ");
+            lenth = Convert.ToInt32(Console.ReadLine());
+
+            Square square = new Square(lenth, x, y);
+            Console.WriteLine("Area:" + square.getArea());
+            Console.WriteLine("Perimeter:" + square.getPerimeter());
+            square.getLocation();
+
+            Console.Write("Enter Value for Move: ");
+            square.move(Convert.ToInt32(Console.ReadLine()));
+
+            Console.WriteLine("After Move");
+            Console.WriteLine("Area:" + square.getArea());
+            Console.WriteLine("Perimeter:" + square.getPerimeter());
+            square.getLocation();
+
+            Console.ReadLine();
+
+        }
+    }
+
+
+    class Shape
+    {
+
+        
+        private int lenth;
+        private Location location;
+
+        public Shape(int lenth,int X,int Y)
+        {
+            this.lenth = lenth;
+            location = new Location(X, Y);
+        }
+
+
+        public int getArea()
+        {
+            return lenth * lenth;
+        }
+       
+
+        public int getPerimeter()
+        {
+            return 4 * lenth;
+        }
+
+        public void move(int value)
+        {
+            location.setX(location.getX() * value);
+            location.setY(location.getY() * value);
+        }
+
+        public void getLocation()
+        {
+            Console.WriteLine("Current Location Start From(" + location.getX() + "," + location.getY() + ")");
+        }
+    }
+
+
+    class Location
+    {
+        private int X;
+        private int Y;
+
+        public Location(int X, int Y)
+        {
+            this.X = X;
+            this.Y = Y;
+        }
+
+        public int getX()
+        {
+            return X;
+        }
+
+        public int getY()
+        {
+            return Y;
+        }
+
+        public void setY(int Y)
+        {
+            this.Y = Y;
+        }
+
+        public void setX(int X)
+        {
+            this.X = X;
+        }
+
+        
+
+    }
+
+    class Square:Shape
+    {
+        public Square(int lenth,int X,int Y) : base(lenth, X, Y)
+        {
+
+        }
+
+        
+    }
+
+
+}
